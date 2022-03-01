@@ -29,6 +29,7 @@ class NinjaCard extends StatelessWidget {
                 letterSpacing: 2
               )
             ),
+            SizedBox(height:10),
             Text(
                 'John Doe',
                 style:TextStyle(
@@ -38,6 +39,34 @@ class NinjaCard extends StatelessWidget {
                     fontWeight:FontWeight.bold
                 )
             ),
+            SizedBox(height:30),
+            Text(
+                'Current  Level',
+                style:TextStyle(
+                    color:Colors.grey,
+                    letterSpacing: 2
+                )
+            ),
+            SizedBox(height:10),
+            Text(
+                '8',
+                style:TextStyle(
+                    color:Colors.amber[200],
+                    letterSpacing: 2,
+                    fontSize:28,
+                    fontWeight:FontWeight.bold
+                )
+            ),
+            SizedBox(height:30),
+            Row(
+              children:[
+                Icon(
+                  Icons.email,
+                  color:Colors.grey[400]
+                ),
+                Text('swagathasd@mail.com')
+              ]
+            )
           ],
         )
       )
