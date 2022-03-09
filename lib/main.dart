@@ -6,7 +6,12 @@ void main() {
   ));
 }
 
-class NinjaCard extends StatelessWidget {
+class NinjaCard extends StatefulWidget {
+  @override
+  State<NinjaCard> createState() => _NinjaCardState();
+}
+
+class _NinjaCardState extends State<NinjaCard> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -83,3 +88,19 @@ class NinjaCard extends StatelessWidget {
     );
   }
 }
+class Test extends StatefulWidget {
+  const Test({Key? key}) : super(key: key);
+
+  @override
+  _TestState createState() => _TestState();
+}
+
+class _TestState extends State<Test> {
+
+  int counter=1;
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
