@@ -1,117 +1,58 @@
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home:NinjaCard()
-  ));
+void main() => runApp(MaterialApp(
+    home: QuoteList()
+));
+
+class QuoteList extends StatefulWidget {
+  @override
+  _QuoteListState createState() => _QuoteListState();
 }
 
-class NinjaCard extends StatefulWidget {
-  @override
-  State<NinjaCard> createState() => _NinjaCardState();
-}
+class _QuoteListState extends State<QuoteList> {
 
-class _NinjaCardState extends State<NinjaCard> {
+  //  List<String> quotes = [
+  //    'Be yourself; everyone else is already taken',
+  //    'I have nothing to declare except my genius',
+  //    'The truth is rarely pure and never simple'
+  //  ];
 
- int ninjaLevel=0;
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        title:Text('Ninja Id Card'),
-        centerTitle:true,
-        backgroundColor:Colors.grey,
-        elevation:0
-      ),
-      floatingActionButton:FloatingActionButton(
-        onPressed:():{
-          setState((){
-            ninjaLevel+=1;
-          })
-      },
-        child:Icon(Icons.add),
-        backgroundColor:Colors.grey[800]
-      ),
-      body:Padding(
-        padding:EdgeInsets.fromLTRB(30, 40, 30,0),
-        child:Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage:AssetImage('assets/thumb.jpg'),
-                radius:40
-              ),
-            ),
-            Divider(
-              height:60,
-              color:Colors.grey[800]
-            ),
-            Text(
-              'Name',
-              style:TextStyle(
-                color:Colors.grey,
-                letterSpacing: 2
-              )
-            ),
-            SizedBox(height:10),
-            Text(
-                'John Doe',
-                style:TextStyle(
-                    color:Colors.amber[200],
-                    letterSpacing: 2,
-                    fontSize:28,
-                    fontWeight:FontWeight.bold
-                )
-            ),
-            SizedBox(height:30),
-            Text(
-                'Current  Level',
-                style:TextStyle(
-                    color:Colors.grey,
-                    letterSpacing: 2
-                )
-            ),
-            SizedBox(height:10),
-            Text(
-                '$ninjaLevel',
-                style:TextStyle(
-                    color:Colors.amber[200],
-                    letterSpacing: 2,
-                    fontSize:28,
-                    fontWeight:FontWeight.bold
-                )
-            ),
-            SizedBox(height:30),
-            Row(
-              children:[
-                Icon(
-                  Icons.email,
-                  color:Colors.grey[400]
-                ),
-                Text('swagathasd@mail.com')
-              ]
+  List<Quote> quotes = [
+    Quote(author: 'Oscar Wilde', text: 'Be yourself; everyone else is already taken'),
+    Quote(author: 'Oscar Wilde', text: 'I have nothing to declare except my genius'),
+    Quote(author: 'Oscar Wilde', text: 'The truth is rarely pure and never simple')
+  ];
+
+  Widget quoteTemplate(quote){
+    return Card(
+      margin:EdgeInsets.fromLTRB(16,16,16,0),
+      child:Column(
+        children: [
+          Text(
+            quote.text,
+            style:TextStyle(
+              fontSize:18,
+              color:Colors.grey[600]
             )
-          ],
-        )
+          )
+        ],
       )
     );
   }
-}
-class Test extends StatefulWidget {
-  const Test({Key? key}) : super(key: key);
 
-  @override
-  _TestState createState() => _TestState();
-}
-
-class _TestState extends State<Test> {
-
-  int counter=1;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Text('Awesome Quotes'),
+        centerTitle: true,
+        backgroundColor: Colors.redAccent,
+      ),
+      body: Column(
+        children: quotes.map((quote) => Text('${quote.text} - ${quote.author}')).toList(),
+      ),
+    );
   }
 }
-
